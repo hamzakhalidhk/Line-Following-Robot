@@ -17,28 +17,24 @@ void motright();
 void motleft();
 void motstop();
 void setup() {
+  
   Serial.begin(9600);
-  // put your setup code here, to run once:
+  
   pinMode(S0, INPUT);
   pinMode(S1, INPUT);
   pinMode(S2, INPUT);
-pinMode(5,INPUT);
-pinMode(6,OUTPUT);
-pinMode(motRight1,OUTPUT);
-pinMode(motRight2,OUTPUT);
-pinMode(motRightpwm,OUTPUT);
-pinMode(motLeft1,OUTPUT);
-pinMode(motLeft2,OUTPUT);
-pinMode(motLeftpwm,OUTPUT);
-int count = 0;
+
+  pinMode(motRight1,OUTPUT);
+  pinMode(motRight2,OUTPUT);
+  pinMode(motRightpwm,OUTPUT);
+  pinMode(motLeft1,OUTPUT);
+  pinMode(motLeft2,OUTPUT);
+  pinMode(motLeftpwm,OUTPUT);
+
 }
 
 void loop() {
 
-static bool once = false;
-
-  digitalWrite(6,HIGH);
-//  sig = digitalRead(5);
   S0sensor = digitalRead(2);
   S2sensor = digitalRead(3);
   S1sensor = digitalRead(4); 
@@ -46,21 +42,18 @@ static bool once = false;
    Serial.print("Signal: "); Serial.print(S0sensor); Serial.print(" "); Serial.print(S1sensor);   Serial.print(" "); Serial.print(S2sensor);
    Serial.print(" "); Serial.print(" "); 
 
-
   //------------------- COMMANDS -------------------------//
   if ((S0sensor == LOW)&&(S1sensor == HIGH)&&(S2sensor == LOW))
-   motfwd();
+  motfwd();
   else if ((S0sensor == HIGH)&&(S1sensor == LOW)&&(S2sensor == LOW))
-   motright();
-     else if ((S0sensor == LOW)&&(S1sensor == LOW)&&(S2sensor == HIGH))
-   motleft();
-    else if ((S0sensor == LOW)&&(S1sensor == LOW)&&(S2sensor == LOW))
-   motfwd();
-   else if ((S0sensor == HIGH)&&(S1sensor == HIGH)&&(S2sensor == HIGH))
-   motstop();
+  motright();
+  else if ((S0sensor == LOW)&&(S1sensor == LOW)&&(S2sensor == HIGH))
+  motleft();
+  else if ((S0sensor == HIGH)&&(S1sensor == HIGH)&&(S2sensor == HIGH))
+  motstop();
   else if ((S0sensor == LOW)&&(S1sensor == LOW)&&(S2sensor == LOW))
-   motbwd();
-
+  motbwd();
+}
 void motfwd(){
 digitalWrite(motRight1,LOW);
 digitalWrite(motRight2, HIGH);
@@ -98,7 +91,6 @@ analogWrite(motLeftpwm, leftPWM);
   {
 digitalWrite(motRight1,LOW);
 digitalWrite(motRight2, LOW);
-
 digitalWrite(motLeft1,LOW);
 digitalWrite(motLeft2, LOW);
 
