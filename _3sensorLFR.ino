@@ -58,6 +58,8 @@ static bool once = false;
    motfwd();
    else if ((S0sensor == HIGH)&&(S1sensor == HIGH)&&(S2sensor == HIGH))
    motstop();
+  else if ((S0sensor == LOW)&&(S1sensor == LOW)&&(S2sensor == LOW))
+   motbwd();
 
 void motfwd(){
 digitalWrite(motRight1,LOW);
