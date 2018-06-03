@@ -3,7 +3,7 @@ int S0sensor,S1sensor,S2sensor,S3sensor,S4sensor,S5sensor;
 
 int motRight1= 7 ;
 int motRight2= 8; 
-int motRightpwm= 9 ;
+int motRightpwm= 6 ;
 int motLeft1= 12;
 int motLeft2= 13 ;
 int motLeftpwm= 11;
@@ -22,7 +22,7 @@ void setup() {
   pinMode(S0, INPUT);
   pinMode(S1, INPUT);
   pinMode(S2, INPUT);
-pinMode(5,INPUT);
+pinMode(4,INPUT);
 pinMode(6,OUTPUT);
 pinMode(motRight1,OUTPUT);
 pinMode(motRight2,OUTPUT);
@@ -48,7 +48,7 @@ void loop() {
 }
   
   digitalWrite(6,HIGH);
-  sig = digitalRead(5);
+  sig = digitalRead(4);
   S0sensor = digitalRead(2);
   S2sensor = digitalRead(3);
   S1sensor = digitalRead(4); 
@@ -71,7 +71,7 @@ void loop() {
    } 
 if(sig == LOW)
    {
-    digitalWrite(6,LOW);
+    digitalWrite(4,LOW);
     once = false;
     }  
 
